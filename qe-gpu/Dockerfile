@@ -44,7 +44,9 @@ RUN ./configure \
     --with-cuda-cc=86 \
     --with-cuda-runtime=12.6 \
     --with-cuda-mpi=yes \
-    && make all -j$(nproc) \
+    && make pw -j$(nproc) \
+    && make cp -j$(nproc) \
+    && make ph -j$(nproc) \
     && make install
 
 # # Set working directory for running calculations
