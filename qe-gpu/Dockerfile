@@ -47,6 +47,7 @@ RUN ./configure \
     && make pw -j$(nproc) \
     && make cp -j$(nproc) \
     && make ph -j$(nproc) \
+    && make pp -j$(nproc) \
     && make install
 
 # # Set working directory for running calculations
