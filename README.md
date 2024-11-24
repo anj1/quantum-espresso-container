@@ -41,6 +41,25 @@ Run a simple calculation:
 docker run --gpus all -v $(pwd):/work qe-gpu pw.x -input example.in
 ```
 
+If you get errors due to `MPI_Init`, you may need to run `mpirun` manually:
+
+```bash
+docker run \
+--gpus all \
+-v $(pwd):/work \
+qe-gpu \
+mpirun --allow-run-as-root -np 4 \
+pw.x -input example.in
+```
+
+You can also use the `mpirun` options:
+```bash
+--mca hwloc_base_binding_policy none 
+--mca btl ^openib 
+--mca pml ob1 
+--mca coll_hcoll_enable 0 
+```
+
 ### Advanced Usage
 
 Run with specific GPU and thread configuration:
